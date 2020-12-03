@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Upcoming Events!!</h1>
+
+    <form action="/add-event" method="post"> 
+        <label for="title">Event</label>
+        <input type="text" name="title" id="title">
+        <label for="start">Date:</label>
+        <input type="date" id="start" name="trip-start"
+       value="2020-12-03"
+       min="2020-12-03" max="2021-12-31">
+       <label for="guests">Number of guests</label>
+        <select name="guests" id="guest">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="2">3</option>
+        <option value="2">4</option>
+        <option value="2">5</option>
+        <label for="title">Room location</label>
+        <input type="text" name="title" id="title">
+        <label for="description">Description</label>
+        <textarea name="description" rows="2" cols="30"></textarea>
+        <input type="submit" value="Add Event">
+      </form>
+
+    {% for event in events %}
+    <div>
+      <p>
+        </b>{{ event.event_name }}:<b> {{ event.date }}: {{ event.room_location }}: {{ event.description }}: 
+        {% if event.done %}
+        <span> &#9989;</span>
+        {% endif %}
+    </p>
+    </div>
+    {% endfor %}
+{% endblock %}
+ 
